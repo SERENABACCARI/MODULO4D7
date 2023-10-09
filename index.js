@@ -26,35 +26,6 @@ fetch("https://striveschool-api.herokuapp.com/api/product/", {
         
 })
 
-/*const name=document.querySelector("#name");
-const imgUrl = document.querySelector("#imgUrl");
-const description = document.querySelector("#description");
-const price = document.querySelector("#price");
-
-async function prodotti() {
-
-    data.response()
-
-    const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name:name.value,
-            imgUrl:imgUrl.value,
-            description:description.value,
-            price:price.value,
-            })
-        
-
-    
-
-    })}
-    function prodotti(data){
-        const prodotti=document.querySelector("#prodotti")
-        prodotti.innerHTML = data.map(({ name, imgUrl, description ,price }) => 
-            /*html*/
 
 
 const name = document.querySelector("#name");
@@ -89,7 +60,7 @@ async function fetchAndDisplayProducts() {
                         <img src="${product.imgUrl}" alt="${product.name}">
                         <h2>${product.description}</h2>
                         <h3>${product.price}</h3>
-                        <button type="button" class="btn btn-info">Info</button>
+                        <button type="button" class="btn btn-info"onclick="openbook(${data.id})" >open</button>
                     </div>
                 `;
             });
@@ -99,6 +70,8 @@ async function fetchAndDisplayProducts() {
     } catch (error) {
         console.error("Error fetching products:", error);
     }
+
+    
 }
 
 // Function to add a new product
@@ -139,8 +112,12 @@ const params = new URLSearchParams(window.location.search)
 const id=params.get('id');
 fetch = ("https://striveschool-api.herokuapp.com/api/product?id=${651d7d7052bbf3001879b219}")
 .then(response => response.json())
-.then(data => {
+.then( => {
 
-    const data=data[0]
+   
     
 })
+
+
+
+
