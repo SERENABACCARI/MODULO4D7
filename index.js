@@ -61,6 +61,7 @@ const name = document.querySelector("#name");
 const imgUrl = document.querySelector("#imgUrl");
 const description = document.querySelector("#description");
 const price = document.querySelector("#price");
+const button = document.querySelector("#button");
 
 const prodottiList = document.querySelector("#prodotti");
 
@@ -88,6 +89,7 @@ async function fetchAndDisplayProducts() {
                         <img src="${product.imgUrl}" alt="${product.name}">
                         <h2>${product.description}</h2>
                         <h3>${product.price}</h3>
+                        <button type="button" class="btn btn-info">Info</button>
                     </div>
                 `;
             });
@@ -130,3 +132,15 @@ async function addProduct() {
 // Call the function to initially fetch and display products
 fetchAndDisplayProducts();
  
+
+/*pagina prodotto*/
+
+const params = new URLSearchParams(window.location.search)
+const id=params.get('id');
+fetch = ("https://striveschool-api.herokuapp.com/api/product?id=${651d7d7052bbf3001879b219}")
+.then(response => response.json())
+.then(data => {
+
+    const data=data[0]
+    
+})
