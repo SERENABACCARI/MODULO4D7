@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    
+
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand">MARKETPLACE</a>
             <form class="d-flex" role="search">
-                <input class="form-control me-2"  id="search"  type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -23,23 +23,52 @@
 
 
 
-<div class="container mt-5" >
-    <div id="prodotti" class="row">
-        <div class="col-12 col-sm-6 col-lg-2">
-            <!--<h1 id="name"></h1>
+    <div class="container mt-5">
+        <div id="prodotti" class="row">
+            <div class="col-12 col-sm-6 col-lg-2">
+                <!--<h1 id="name"></h1>
             <img id="imgUrl" src="" alt="">
             <h2 id="description"></h2>
             <h3 id="price"></h3>
-            <button type="button" class="btn btn-info">Info</button>-->
+            <button type="button" class="btn btn-info" onclick="open(${product.id})">open</button>-->
+            </div>
         </div>
     </div>
-</div>
 
 
+    <h3 style="display:flex; justify-content: center;">Modifica o Elimina</h3>
+    <form class="row mt-5" onsubmit="modificato(event)">
+        <div class="container d-flex justify-content-center">
+
+            <div class="row">
+                <div class="col-3">
+
+                    <input type="text" placeholder="name">
+                </div>
+                <div class="col-3">
+
+                    <input type="text" placeholder="description">
+                </div>
+                <div class="col-3">
+
+                    <input type="text" placeholder="price">
+                </div>
+
+                <div class="col-2">
+                    <button type="button" class="btn btn-light">modifica</button>
+
+                </div>
+                <div class="col-1">
+
+                    <button type="button" class="btn btn-light">elimina</button>
 
 
+                </div>
+            </div>
 
-
+        </div>
+        </div>
+    </form>
 
 
 

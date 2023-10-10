@@ -18,15 +18,11 @@ fetch("https://striveschool-api.herokuapp.com/api/product/", {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U"
     }
 })
-.then((r) => r.json())
-.then((data)=>{
-    console.log(data);
-    
+    .then((r) => r.json())
+    .then((data) => {
+        console.log(data);
 
-        
-})
-
-
+    })
 
 const name = document.querySelector("#name");
 const imgUrl = document.querySelector("#imgUrl");
@@ -36,7 +32,7 @@ const button = document.querySelector("#button");
 
 const prodottiList = document.querySelector("#prodotti");
 
-// Function to fetch and display products
+// funzione fetch e metodo get*/
 async function fetchAndDisplayProducts() {
     try {
         const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
@@ -52,15 +48,15 @@ async function fetchAndDisplayProducts() {
 
             prodottiList.innerHTML = "";
 
-           
+
             data.forEach((product) => {
                 prodottiList.innerHTML += `
-                    <div class="col-12 col-sm-6 col-lg-2">
-                        <h1>${product.name}</h1>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <h2>${product.name}</h2>
                         <img src="${product.imgUrl}" alt="${product.name}">
-                        <h2>${product.description}</h2>
-                        <h3>${product.price}</h3>
-                        <button type="button" class="btn btn-info"onclick="openbook(${data.id})" >open</button>
+                        <h3>${product.description}</h3>
+                        <h6>${product.price}</h6>
+                        <button type="button" class="btn btn-info"onclick="open(${data.id})" >open</button>
                     </div>
                 `;
             });
@@ -71,10 +67,19 @@ async function fetchAndDisplayProducts() {
         console.error("Error fetching products:", error);
     }
 
-    
+
 }
 
-// Function to add a new product
+/*richiamo il button open*/
+
+function open(id) {
+    window.open(`prodotto.html?id=${id}`)
+
+}
+
+
+
+// creo prodotti per il front page con il metodo post*/
 async function addProduct() {
     try {
         const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
@@ -92,7 +97,7 @@ async function addProduct() {
         });
 
         if (response.ok) {
-            // Fetch and display updated product list after adding a new product
+
             fetchAndDisplayProducts();
         } else {
             console.error("Failed to add the product");
@@ -102,21 +107,42 @@ async function addProduct() {
     }
 }
 
-// Call the function to initially fetch and display products
+
 fetchAndDisplayProducts();
- 
 
-/*pagina prodotto*/
 
-const params = new URLSearchParams(window.location.search)
-const id=params.get('id');
-fetch = ("https://striveschool-api.herokuapp.com/api/product?id=${651d7d7052bbf3001879b219}")
-.then(response => response.json())
-.then( => {
 
-   
-    
-})
+
+/*modifica prodotto con il metodo put*/
+async function modifica() {
+    try {
+        const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U"
+            },
+            body: JSON.stringify({
+                name: name.value,
+                description: description.value,
+                price: price.value
+            })
+        });
+
+        if (response.ok) {
+            modifica();
+        } else {
+            console.error("Failed ");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+
+
+
+
 
 
 
