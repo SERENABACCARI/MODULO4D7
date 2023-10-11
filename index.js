@@ -114,30 +114,7 @@ fetchAndDisplayProducts();
 
 
 /*modifica prodotto con il metodo put*/
-/*async function modifica() {
-    try {
-        const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U"
-            },
-            body: JSON.stringify({
-                name: name.value,
-                description: description.value,
-                price: price.value
-            })
-        });
 
-        if (response.ok) {
-            modifica();
-        } else {
-            console.error("Failed ");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}*/
 
 
 async function modifica(name, description, price) {
