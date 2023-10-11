@@ -114,7 +114,7 @@ fetchAndDisplayProducts();
 
 
 /*modifica prodotto con il metodo put*/
-async function modifica() {
+/*async function modifica() {
     try {
         const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
             method: "PUT",
@@ -137,9 +137,33 @@ async function modifica() {
     } catch (error) {
         console.error("Error:", error);
     }
+}*/
+
+
+async function modifica(name, description, price) {
+    try {
+        const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer your_token_here"
+            },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+                price: price
+            })
+        });
+
+        if (response.ok) {
+            console.log("Product successfully updated.");
+        } else {
+            console.error("Failed to update product.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
-
-
 
 
 
