@@ -84,7 +84,7 @@ async function EditProduct(_id) {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U" 
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U"
         }
     });
 
@@ -96,15 +96,15 @@ async function EditProduct(_id) {
 
         editEventDiv.innerHTML = `
             <form class="row mt-5" onsubmit="editEventSubmit(event, '${_id}')">
-                <div class="container d-flex justify-content-center">
+                <div class="container ">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col">
                             <input id="name" type="text" placeholder="name" value="${name}">
                         </div>
-                        <div class="col-3">
+                        <div class="col">
                             <input id="description" type="text" placeholder="description" value="${description}">
                         </div>
-                        <div class="col-3">
+                        <div class="col">
                             <input id="price" type="text" placeholder="price" value="${price}">
                         </div>
                     </div>
@@ -120,10 +120,11 @@ async function editEventSubmit(event, _id) {
     const name = document.querySelector("#name").value;
     const description = document.querySelector("#description").value;
     const price = document.querySelector("#price").value;
+    const submit = document.querySelector("#submit").value;
 
-    // Perform logic to update the product with the edited data (e.g., another fetch request with PUT method)
+
 }
- 
+
 
 
 
@@ -143,7 +144,7 @@ async function addProduct() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U" 
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkNWE0YjUyYmJmMzAwMTg3OWIyMGUiLCJpYXQiOjE2OTY0MjI0NzUsImV4cCI6MTY5NzYzMjA3NX0.cOoVKZ1LhToN_9qfJKEdqgLg9zXJ_yAYv1rF8ChQy7U"
             },
             body: JSON.stringify({
                 name: name.value,
@@ -168,36 +169,17 @@ async function addProduct() {
 fetchAndDisplayProducts();
 
 
+/*METODO DELETE*/
 
+async function deleteProduct(_id) {
+    const response = await fetch("https://striveschool-api.herokuapp.com/api/product/" + _id, {
+        method: "DELETE",
+    })
+    if (response.ok) { alert("Cancellato +_id"); }
 
-/*modifica prodotto con il metodo put*/
+    else { alert("cancellazione fallita!!") }
+}
 
-
-
-/*async function modifica(name, description, price) {
-    try {
-        const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer your_token_here"
-            },
-            body: JSON.stringify({
-                name: name,
-                description: description,
-                price: price
-            })
-        });
-
-        if (response.ok) {
-            console.log("Product successfully updated.");
-        } else {
-            console.error("Failed to update product.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}*/
 
 
 

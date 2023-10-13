@@ -10,7 +10,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/product?id=${id}`, {
 })
     .then(response => response.json())
     .then(product => {
-        const product = products[0]; 
+         
 
         const title = document.querySelector("#title");
         const description = document.querySelector("#description");
